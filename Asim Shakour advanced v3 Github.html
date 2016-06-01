@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Asim Shakour's Code Sample v3</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script>
+        function sayHellotoAWESOMECOMPANY() {
+            document.getElementById("buttonAWESOMECOMPANY").innerHTML = 'JavaScript, JS, is not needed here.'
+        }
+        // To notify AWESOMECOMPANY JS is not really needed since alternative information for end-user is provided.
+
+        function validateForm() {
+            //$('#submitForm').trigger("reset");              // may need for future. Don't like having the return false
+            var x = document.forms["loginFormAWESOMECOMPANY"]["Username"].value;
+            var y = document.forms["loginFormAWESOMECOMPANY"]["Password"].value;
+            document.getElementById("usernameNotes").innerHTML =""; //resets notes 
+            document.getElementById("passwordNotes").innerHTML =""; //resets notes 
+            document.getElementById("submitNotes").innerHTML ="";   //resets notes 
+            if ((x == null || x == "") && (y == null || y == "")) {
+                alert("Please enter username and password.");
+                document.getElementById("usernameNotes").innerHTML ="Please enter username and password.";
+                 $("#usernameNotes").css("background-color", "#570412");
+                 $("#usernameNotes").css("color", "#f6ffc9");
+                 $('#submitForm').trigger("reset");
+                return false;
+                //checks username and password updates notes and alerts user
+            }
+            if (x == null || x == "") {
+                alert("Username must be filled out.");
+                document.getElementById("usernameNotes").innerHTML ="Username must be filled out.";
+                 $("#usernameNotes").css("background-color", "#570412");
+                 $("#usernameNotes").css("color", "#f6ffc9");
+                return false;
+                //checks username and updates notes and alerts user
+            }
+            if (y == null || y == "") {
+                alert("Password must be filled out.");
+                document.getElementById("passwordNotes").innerHTML ="Password must be filled out.";
+                 $("#passwordNotes").css("background-color", "#570412");
+                 $("#passwordNotes").css("color", "#f6ffc9");
+                 //checks password and updates notes and alerts user
+                return false;
+            }
+            if (x !== null || x !== "" || y !== null || y !== "") {
+                alert("No accounts exist at this time, please return again at a later time to register on Asim's site.");
+                document.getElementById("submitNotes").innerHTML ="No accounts exist at this time, please return again at a later time to register on Asim's site.";
+                 $("#submitNotes").css("background-color", "#570412");
+                 $("#submitNotes").css("color", "#f6ffc9");
+                 return false;
+                 //checks username and password. Then updates notes and alerts user. Notified: that at this point registration does not exist for anyone, so user can not login and must return to Asim's site.
+            }
+        } 
+        // To verify form input (for null, empty and not having an account as yet), alert user, and update page with alert.
+        // VARIABLE x is used to store username 
+        // VARIABLE y is used to store password
+        
+        $(document).ready(function() {
+            $("#buttonAWESOMECOMPANY").focus(function() {
+                $(this).css("background-color", "#0c5754");
+                $(this).css("color", "#f6ffc9");
+                $(this).fadeOut(1000);
+                $(this).fadeIn(100);
+            });
+            $("#submitForm").focus(function() {
+                $(this).css("background-color", "#0c5754");
+                $(this).css("color", "#f6ffc9");
+                $(this).fadeIn(1000);
+            });
+        });
+        //The top half to highlight and remove the AWESOMECOMPANY JS info
+        // and the bottom is for effects of submission of form
+        
+        $(document).ready(function() {
+            $("#hiding").click(function() {
+                $(this).css("background-color", "grey");
+                $(this).fadeOut(10000);
+            });
+        });
+        // This is to remove the non-vital line, the fading out if just to show web design skills and does not violate accessibility since no useful page info is lost
+
+        //Just for demo of skills - hover, active, and focus info is added below in the styles section.
+    </script>
+    <noscript> NOTE - For users with JavaScript turned off. Don't worry. JavaScript, JS, is not needed here. To login, one must enter both a username and password. Also if JS is enabled, a non-vital line fades (or goes) away for visual effects. </noscript>
+
+</head>
+<style>
+    .smallTextSize {
+        font-size: 26px;
+    }
+    .heading1 {
+        font-size: 32px;
+    }
+    
+    .heading2 {
+        font-size: 30px;
+    }
+    
+    .causingAction {
+        cursor: pointer;
+        padding: 0.25% 1.5%;
+        font-size: 24px;
+        text-decoration: underline;
+    }
+
+    .causingAction:hover,
+    .causingAction:active,
+    .causingAction:focus {
+        background-color: blue;
+        color: white;
+        font-size: 28px;
+        border: inset;
+        cursor: pointer;
+    }
+
+    a:hover,
+    a:active,
+    a:focus {
+        background-color: blue;
+        color: #ffffff;
+        font-size: 25px;
+    }
+    
+    #skip a {
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+    
+    #skip a:focus {
+        position: static;
+        width: auto;
+        height: auto;
+    }
+    
+</style>
+
+<body>
+    <div id="skip"><a href="#loginJump">Skip to Main Content</a></div>
+    <h1 class="heading1">Asim Shakour's Code Sample v3</h1>
+    <button type="button" title="JavaScript, JS, is not needed here." class="causingAction" onfocus="sayHellotoAWESOMECOMPANY()" id="buttonAWESOMECOMPANY">For AWESOMECOMPANY</button>
+
+    <p class="smallTextSize" id="hiding"><a title="If you click here or press enter, then the line turns green and fades away in 10 seconds." href="#loginJump">Click here or press enter to make this line go away.</a></p>
+    <h2 id="loginJump" class="heading2">Login</h2>
+    <form name="loginFormAWESOMECOMPANY" title="For this Loigin form, JavaScript (JS) is not needed." onsubmit="return validateForm()">
+        <p id="usernameNotes"></p>
+        <label class="smallTextSize" for="Username">Username:</label>
+        <input class="smallTextSize" type="text" name="Username" id="Username"/>
+        <p id="passwordNotes"></p>
+        <label class="smallTextSize" for="Password">Password: </label>
+        <input class="smallTextSize" type="password" name="Password" id="Password"/>
+        <p id="submitNotes"></p>
+        <input type="submit" class="causingAction" value="Login" id="submitForm">
+    </form>
+</body>
+
+</html>
